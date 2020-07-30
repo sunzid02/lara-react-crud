@@ -20,6 +20,7 @@ export default class Index extends Component {
                     <Route exact path="/category/add" component={ Add } />
 
                 </div>
+
             </Router>                
             </div>
         );

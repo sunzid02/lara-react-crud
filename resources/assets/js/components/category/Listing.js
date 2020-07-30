@@ -1,12 +1,34 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-
-
+import  axios  from 'axios';
+import { baseUrl } from '../../baseUrl';
 
 export default class Listing extends Component {
+
+    constructor() { 
+
+        super();
+
+        this.state = {
+            categories: []
+        };
+    }
+
+    componentDidMount() {
+
+        axios.get(baseUrl + 'category')
+        .then(response => {
+
+            this.setState({
+                categories: response.data
+            });                        
+        });
+    }
+
     render() {
         return (
             <div className="container">
+                <br />
+
                 <table className="table">
                     <thead>
                         <tr>
@@ -18,28 +40,20 @@ export default class Listing extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Cat 1</td>
-                            <td>Active</td>
-                            <td>Date</td>
-                            <td>Date</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Cat 2</td>
-                            <td>Active</td>
-                            <td>Date</td>
-                            <td>Date</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Cat 3</td>
-                            <td>Active</td>
-                            <td>Date</td>
-                            <td>Date</td>
-                        </tr>
 
+                        {
+                            this.state.categories.map(category => {
+                                return (
+                                    <tr key={category.id}>
+                                        <th scope="row">1</th>
+                                        <td>{category.name}</td>
+                                        <td>{category.active==1?("Active"):("Inactive") }</td>
+                                        <td>{category.created_at}</td>
+                                        <td>{category.updated_at}</td>
+                                    </tr>
+                                )
+                            })
+                        }
                     </tbody>
                 </table>
             </div>
