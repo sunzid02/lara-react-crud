@@ -69893,8 +69893,38 @@ var Listing = function (_Component) {
             });
         }
     }, {
+        key: 'onDelete',
+        value: function onDelete(category_id) {
+            var _this3 = this;
+
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.delete(__WEBPACK_IMPORTED_MODULE_2__baseUrl__["a" /* baseUrl */] + 'category/delete/' + category_id).then(function (response) {
+
+                var categories = _this3.state.categories;
+
+                for (var index = 0; index < categories.length; index++) {
+                    if (categories[index].id == category_id) {
+                        categories.splice(index, 1);
+
+                        _this3.setState({
+                            categories: categories
+                        });
+                    }
+                }
+
+                alert('Deleted successfully');
+            });
+            // .then(response => {
+
+            //     this.setState({
+            //         categories: response.data
+            //     });
+            // });
+        }
+    }, {
         key: 'render',
         value: function render() {
+            var _this4 = this;
+
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 { className: 'container' },
@@ -69932,6 +69962,11 @@ var Listing = function (_Component) {
                                 'th',
                                 { scope: 'col' },
                                 'Updated At'
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'th',
+                                { scope: 'col' },
+                                'Action'
                             )
                         )
                     ),
@@ -69945,7 +69980,9 @@ var Listing = function (_Component) {
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'th',
                                     { scope: 'row' },
-                                    '1'
+                                    ' ',
+                                    category.id,
+                                    ' '
                                 ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'td',
@@ -69966,6 +70003,15 @@ var Listing = function (_Component) {
                                     'td',
                                     null,
                                     category.updated_at
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'td',
+                                    null,
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'a',
+                                        { href: '#', onClick: _this4.onDelete.bind(_this4, category.id) },
+                                        ' Delete '
+                                    )
                                 )
                             );
                         })
