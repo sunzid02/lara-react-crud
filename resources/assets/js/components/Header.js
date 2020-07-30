@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 
 import Home from './Home';
 import About from './About';
+import Category from './category/Index';
 
 export default class Header extends Component {
     render() {
@@ -22,6 +23,9 @@ export default class Header extends Component {
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/about">About Us</Link>
                                 </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/category">Category</Link>
+                                </li>
                             </ul>
                             <form className="form-inline my-2 my-lg-0">
                                 <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
@@ -32,6 +36,7 @@ export default class Header extends Component {
 
                     <Route exact path="/" component={ Home } />
                     <Route exact path="/about" component={ About } />
+                    <Route exact path="/category" component={ Category } />
 
                 </div>
             </Router>
