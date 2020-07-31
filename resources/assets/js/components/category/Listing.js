@@ -3,6 +3,8 @@ import  axios  from 'axios';
 import { baseUrl } from '../../baseUrl';
 import { Link } from 'react-router-dom';
 import Pagination from "react-js-pagination";
+import SuccessAlert from './SuccessAlert';
+import ErrorAlert from './ErrorAlert';
 
 
 export default class Listing extends Component {
@@ -17,6 +19,8 @@ export default class Listing extends Component {
             itemsCountPerPage: 1,
             totalItemsCount: 1,
             pageRangeDisplayed: 3,
+            alert_message: '',
+
         };
     }
 
@@ -31,6 +35,8 @@ export default class Listing extends Component {
                 itemsCountPerPage: response.data.per_page,
                 totalItemsCount: response.data.total,
                 pageRangeDisplayed: 3,
+                alert_message: '',
+
             });                       
         });
     }
@@ -54,10 +60,16 @@ export default class Listing extends Component {
                 }
             }
 
-
-            alert('Deleted successfully');
-
+            this.setState({
+                alert_message: 'success'
+            });
         })
+        .catch(error => {
+
+            this.setState({
+                alert_message: 'error'
+            });
+        });
         // .then(response => {
 
         //     this.setState({
@@ -85,6 +97,9 @@ export default class Listing extends Component {
         return (
             <div className="container">
                 <br />
+
+                {this.state.alert_message == 'success' ? <SuccessAlert /> : null}
+                {this.state.alert_message == 'error' ? <ErrorAlert /> : null}
 
                 <table className="table">
                     <thead>

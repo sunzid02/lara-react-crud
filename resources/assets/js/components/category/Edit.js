@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { baseUrl } from '../../baseUrl';
+import SuccessAlert from './SuccessAlert';
+import ErrorAlert from './ErrorAlert';
 
 
 export default class Edit extends Component {
@@ -9,7 +11,8 @@ export default class Edit extends Component {
         super(props);
 
         this.state = {
-            category_name: ''
+            category_name: '',
+            alert_message: '',
         };
 
         this.onChangeCategoryName = this.onChangeCategoryName.bind(this);
@@ -35,7 +38,18 @@ export default class Edit extends Component {
         }
         
         axios.put(baseUrl + 'category/update/' + this.props.match.params.id, category)
-        .then( response => console.log(response.data) );
+        .then( response => {
+
+            this.setState({
+                alert_message: 'success'
+            });
+        })
+        .catch(error => {
+
+            this.setState({
+                alert_message: 'error'
+            });
+        });
     }
     
     componentDidMount() {
@@ -54,6 +68,9 @@ export default class Edit extends Component {
         return (
             <div className="container">
                 <br/>
+                {this.state.alert_message == 'success' ? <SuccessAlert/> : null }
+                {this.state.alert_message == 'error' ? <ErrorAlert/> : null }
+               
                 <form onSubmit={ this.onSubmit }>
                     <div className="form-group">
                         <label htmlFor="category_name">Category Name</label>

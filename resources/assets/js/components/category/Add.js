@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { baseUrl } from '../../baseUrl';
-
+import SuccessAlert from './SuccessAlert';
+import ErrorAlert from './ErrorAlert';
 
 export default class Add extends Component {
     constructor() {
@@ -9,7 +10,9 @@ export default class Add extends Component {
         super();
 
         this.state = {
-            category_name: ''
+            category_name: '',
+            alert_message: '',
+
         };
 
         this.onChangeCategoryName = this.onChangeCategoryName.bind(this);
@@ -35,13 +38,28 @@ export default class Add extends Component {
         }
         
         axios.post(baseUrl+'category/store', category)
-        .then( response => console.log(response.data) );
+        .then(response => {
+
+            this.setState({
+                category_name: '',
+                alert_message: 'success'
+            });
+        })
+        .catch(error => {
+
+            this.setState({
+                alert_message: 'error'
+            });
+        });
     }
     
     render() {
         return (
             <div className="container">
                 <br/>
+                {this.state.alert_message == 'success' ? <SuccessAlert /> : null}
+                {this.state.alert_message == 'error' ? <ErrorAlert /> : null}
+
                 <form onSubmit={ this.onSubmit }>
                     <div className="form-group">
                         <label htmlFor="category_name">Category Name</label>
