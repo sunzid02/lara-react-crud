@@ -69783,8 +69783,8 @@ var Add = function (_Component) {
                 'div',
                 { className: 'container' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
-                this.state.alert_message == 'success' ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__SuccessAlert__["a" /* default */], null) : null,
-                this.state.alert_message == 'error' ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__ErrorAlert__["a" /* default */], null) : null,
+                this.state.alert_message == 'success' ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__SuccessAlert__["a" /* default */], { message: "record inserted successfully " }) : null,
+                this.state.alert_message == 'error' ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__ErrorAlert__["a" /* default */], { message: "error occured while inserting" }) : null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'form',
                     { onSubmit: this.onSubmit },
@@ -69896,6 +69896,7 @@ var Listing = function (_Component) {
         value: function onDelete(category_id) {
             var _this3 = this;
 
+            alert('Are u sure u want to delete this record?');
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.delete(__WEBPACK_IMPORTED_MODULE_2__baseUrl__["a" /* baseUrl */] + 'category/delete/' + category_id).then(function (response) {
 
                 var categories = _this3.state.categories;
@@ -69951,8 +69952,8 @@ var Listing = function (_Component) {
                 'div',
                 { className: 'container' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
-                this.state.alert_message == 'success' ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__SuccessAlert__["a" /* default */], null) : null,
-                this.state.alert_message == 'error' ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__ErrorAlert__["a" /* default */], null) : null,
+                this.state.alert_message == 'success' ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__SuccessAlert__["a" /* default */], { message: "record deleted successfully " }) : null,
+                this.state.alert_message == 'error' ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__ErrorAlert__["a" /* default */], { message: "error occured while deleting" }) : null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'table',
                     { className: 'table' },
@@ -70217,8 +70218,8 @@ var Edit = function (_Component) {
                 'div',
                 { className: 'container' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
-                this.state.alert_message == 'success' ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__SuccessAlert__["a" /* default */], null) : null,
-                this.state.alert_message == 'error' ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__ErrorAlert__["a" /* default */], null) : null,
+                this.state.alert_message == 'success' ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__SuccessAlert__["a" /* default */], { message: "record updated successfully " }) : null,
+                this.state.alert_message == 'error' ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__ErrorAlert__["a" /* default */], { message: "error occured while updating" }) : null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'form',
                     { onSubmit: this.onSubmit },
@@ -70817,10 +70818,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var SuccessAlert = function (_Component) {
     _inherits(SuccessAlert, _Component);
 
-    function SuccessAlert() {
+    function SuccessAlert(props) {
         _classCallCheck(this, SuccessAlert);
 
-        return _possibleConstructorReturn(this, (SuccessAlert.__proto__ || Object.getPrototypeOf(SuccessAlert)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (SuccessAlert.__proto__ || Object.getPrototypeOf(SuccessAlert)).call(this, props));
     }
 
     _createClass(SuccessAlert, [{
@@ -70829,7 +70830,7 @@ var SuccessAlert = function (_Component) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "div",
                 { className: "alert alert-success", role: "alert" },
-                "Updated Successfully"
+                this.props.message
             );
         }
     }]);
@@ -70859,10 +70860,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var ErrorAlert = function (_Component) {
     _inherits(ErrorAlert, _Component);
 
-    function ErrorAlert() {
+    function ErrorAlert(props) {
         _classCallCheck(this, ErrorAlert);
 
-        return _possibleConstructorReturn(this, (ErrorAlert.__proto__ || Object.getPrototypeOf(ErrorAlert)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (ErrorAlert.__proto__ || Object.getPrototypeOf(ErrorAlert)).call(this, props));
     }
 
     _createClass(ErrorAlert, [{
@@ -70871,7 +70872,7 @@ var ErrorAlert = function (_Component) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "div",
                 { className: "alert alert-danger", role: "alert" },
-                "Error Occured"
+                this.props.message
             );
         }
     }]);

@@ -43,6 +43,7 @@ export default class Listing extends Component {
 
     onDelete(category_id) {
 
+        alert('Are u sure u want to delete this record?');
         axios.delete(baseUrl + 'category/delete/' + category_id)
         .then(response => {
 
@@ -98,8 +99,8 @@ export default class Listing extends Component {
             <div className="container">
                 <br />
 
-                {this.state.alert_message == 'success' ? <SuccessAlert /> : null}
-                {this.state.alert_message == 'error' ? <ErrorAlert /> : null}
+                {this.state.alert_message == 'success' ? <SuccessAlert message={"record deleted successfully "} /> : null}
+                {this.state.alert_message == 'error' ? <ErrorAlert message={"error occured while deleting"}  /> : null}
 
                 <table className="table">
                     <thead>

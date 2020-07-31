@@ -57,8 +57,9 @@ export default class Add extends Component {
         return (
             <div className="container">
                 <br/>
-                {this.state.alert_message == 'success' ? <SuccessAlert /> : null}
-                {this.state.alert_message == 'error' ? <ErrorAlert /> : null}
+
+                {this.state.alert_message == 'success' ? <SuccessAlert message={"record inserted successfully "} /> : null}
+                {this.state.alert_message == 'error' ? <ErrorAlert message={"error occured while inserting"} /> : null}
 
                 <form onSubmit={ this.onSubmit }>
                     <div className="form-group">
