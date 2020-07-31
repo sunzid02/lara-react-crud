@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import  axios  from 'axios';
 import { baseUrl } from '../../baseUrl';
 import { Link } from 'react-router-dom';
+import Pagination from "react-js-pagination";
+
 
 export default class Listing extends Component {
 
@@ -10,7 +12,11 @@ export default class Listing extends Component {
         super();
 
         this.state = {
-            categories: []
+            categories: [],
+            activePage: 1,
+            itemsCountPerPage: 1,
+            totalItemsCount: 1,
+            pageRangeDisplayed: 3,
         };
     }
 
@@ -20,8 +26,12 @@ export default class Listing extends Component {
         .then(response => {
 
             this.setState({
-                categories: response.data
-            });                        
+                categories: response.data.data,
+                activePage: response.data.current_page,
+                itemsCountPerPage: response.data.per_page,
+                totalItemsCount: response.data.total,
+                pageRangeDisplayed: 3,
+            });                       
         });
     }
 
@@ -56,6 +66,21 @@ export default class Listing extends Component {
         // });
     }
 
+    handlePageChange(pageNumber) {
+
+        axios.get(baseUrl + 'category?page='+pageNumber)
+        .then(response => {
+
+            this.setState({
+                categories: response.data.data,
+                activePage: response.data.current_page,
+                itemsCountPerPage: response.data.per_page,
+                totalItemsCount: response.data.total,
+                pageRangeDisplayed: 3,
+            });
+        });
+    }
+
     render() {
         return (
             <div className="container">
@@ -84,8 +109,8 @@ export default class Listing extends Component {
                                         <td>{category.created_at}</td>
                                         <td>{category.updated_at}</td>
                                         <td>
-                                           <Link to={`/category/edit/${category.id}`}> Edit </Link>
-                                           <a href="#" onClick={this.onDelete.bind(this, category.id)}> Delete </a>
+                                            <Link  to={`/category/edit/${category.id}`}> Edit </Link> | 
+                                           <a href="#"  onClick={this.onDelete.bind(this, category.id)}> Delete </a>
                                         </td>
                                     </tr>
                                 )
@@ -93,6 +118,19 @@ export default class Listing extends Component {
                         }
                     </tbody>
                 </table>
+
+                {/* pagination */}
+                <div className="d-flex justify-content-center">
+                    <Pagination
+                        activePage={this.state.activePage}
+                        itemsCountPerPage={this.state.itemsCountPerPage}
+                        totalItemsCount={this.state.totalItemsCount}
+                        pageRangeDisplayed={this.state.pageRangeDisplayed}
+                        onChange={this.handlePageChange.bind(this)}
+                        itemClass='page-item'
+                        linkClass='page-link'
+                    />
+                </div>
             </div>
         );
     }
