@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 
 import Add from './Add';
 import Listing from './Listing';
@@ -11,7 +11,6 @@ export default class Index extends Component {
     render() {
         return (
             <div className="container">
-            <Router>
                 <div>
                     <hr/>
                     <Link to="/category" className="btn btn-primary">Listing </Link>&nbsp;
@@ -23,7 +22,7 @@ export default class Index extends Component {
 
                 </div>
 
-            </Router>                
+                      
             </div>
         );
     }

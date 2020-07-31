@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import {  Link, Route } from 'react-router-dom';
 
 import Home from './Home';
 import About from './About';
@@ -8,7 +8,6 @@ import Category from './category/Index';
 export default class Header extends Component {
     render() {
         return (
-            <Router>
                 <div>
                     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,8 +37,10 @@ export default class Header extends Component {
                     <Route exact path="/about" component={ About } />
                     <Route exact path="/category" component={ Category } />
 
+                    <Route exact path="/category/add" component={Category} />
+                    <Route exact path="/category/edit/:id" component={Category} />
+
                 </div>
-            </Router>
         );
     }
 }

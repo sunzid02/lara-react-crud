@@ -16753,7 +16753,7 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return baseUrl; });
-var baseUrl = 'http://localhost:8000/';
+var baseUrl = 'http://localhost:8000/api/';
 
 /***/ }),
 /* 26 */
@@ -39499,6 +39499,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Header__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Footer__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_router_dom__ = __webpack_require__(21);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -39506,6 +39507,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
 
 
 
@@ -39540,7 +39543,11 @@ var Index = function (_Component) {
 
 
 if (document.getElementById('app')) {
-    __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Index, null), document.getElementById('app'));
+    __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        __WEBPACK_IMPORTED_MODULE_4_react_router_dom__["a" /* BrowserRouter */],
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Index, null)
+    ), document.getElementById('app'));
 }
 
 /***/ }),
@@ -67814,69 +67821,67 @@ var Header = function (_Component) {
         key: 'render',
         value: function render() {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["a" /* BrowserRouter */],
+                'div',
                 null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    null,
+                    'nav',
+                    { className: 'navbar navbar-expand-lg navbar-dark bg-dark' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'nav',
-                        { className: 'navbar navbar-expand-lg navbar-dark bg-dark' },
+                        'button',
+                        { className: 'navbar-toggler', type: 'button', 'data-toggle': 'collapse', 'data-target': '#navbarSupportedContent', 'aria-controls': 'navbarSupportedContent', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'navbar-toggler-icon' })
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'collapse navbar-collapse', id: 'navbarSupportedContent' },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'button',
-                            { className: 'navbar-toggler', type: 'button', 'data-toggle': 'collapse', 'data-target': '#navbarSupportedContent', 'aria-controls': 'navbarSupportedContent', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation' },
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'navbar-toggler-icon' })
-                        ),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'div',
-                            { className: 'collapse navbar-collapse', id: 'navbarSupportedContent' },
+                            'ul',
+                            { className: 'navbar-nav mr-auto' },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'ul',
-                                { className: 'navbar-nav mr-auto' },
+                                'li',
+                                { className: 'nav-item' },
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'li',
-                                    { className: 'nav-item' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
-                                        { className: 'nav-link active', to: '/' },
-                                        'Home'
-                                    )
-                                ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'li',
-                                    { className: 'nav-item' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
-                                        { className: 'nav-link', to: '/about' },
-                                        'About Us'
-                                    )
-                                ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'li',
-                                    { className: 'nav-item' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
-                                        { className: 'nav-link', to: '/category' },
-                                        'Category'
-                                    )
+                                    __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
+                                    { className: 'nav-link active', to: '/' },
+                                    'Home'
                                 )
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'form',
-                                { className: 'form-inline my-2 my-lg-0' },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'form-control mr-sm-2', type: 'search', placeholder: 'Search', 'aria-label': 'Search' }),
+                                'li',
+                                { className: 'nav-item' },
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'button',
-                                    { className: 'btn btn-outline-success my-2 my-sm-0', type: 'submit' },
-                                    'Search'
+                                    __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
+                                    { className: 'nav-link', to: '/about' },
+                                    'About Us'
+                                )
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'li',
+                                { className: 'nav-item' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
+                                    { className: 'nav-link', to: '/category' },
+                                    'Category'
                                 )
                             )
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'form',
+                            { className: 'form-inline my-2 my-lg-0' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'form-control mr-sm-2', type: 'search', placeholder: 'Search', 'aria-label': 'Search' }),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'button',
+                                { className: 'btn btn-outline-success my-2 my-sm-0', type: 'submit' },
+                                'Search'
+                            )
                         )
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { exact: true, path: '/', component: __WEBPACK_IMPORTED_MODULE_2__Home__["a" /* default */] }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { exact: true, path: '/about', component: __WEBPACK_IMPORTED_MODULE_3__About__["a" /* default */] }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { exact: true, path: '/category', component: __WEBPACK_IMPORTED_MODULE_4__category_Index__["a" /* default */] })
-                )
+                    )
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { exact: true, path: '/', component: __WEBPACK_IMPORTED_MODULE_2__Home__["a" /* default */] }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { exact: true, path: '/about', component: __WEBPACK_IMPORTED_MODULE_3__About__["a" /* default */] }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { exact: true, path: '/category', component: __WEBPACK_IMPORTED_MODULE_4__category_Index__["a" /* default */] }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { exact: true, path: '/category/add', component: __WEBPACK_IMPORTED_MODULE_4__category_Index__["a" /* default */] }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { exact: true, path: '/category/edit/:id', component: __WEBPACK_IMPORTED_MODULE_4__category_Index__["a" /* default */] })
             );
         }
     }]);
@@ -69665,27 +69670,23 @@ var Index = function (_Component) {
                 'div',
                 { className: 'container' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["a" /* BrowserRouter */],
+                    'div',
                     null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        null,
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
-                            { to: '/category', className: 'btn btn-primary' },
-                            'Listing '
-                        ),
-                        '\xA0',
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
-                            { to: '/category/add', className: 'btn btn-primary' },
-                            ' Add '
-                        ),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { exact: true, path: '/category', component: __WEBPACK_IMPORTED_MODULE_3__Listing__["a" /* default */] }),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { exact: true, path: '/category/add', component: __WEBPACK_IMPORTED_MODULE_2__Add__["a" /* default */] }),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { exact: true, path: '/category/edit/:id', component: __WEBPACK_IMPORTED_MODULE_4__Edit__["a" /* default */] })
-                    )
+                        __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
+                        { to: '/category', className: 'btn btn-primary' },
+                        'Listing '
+                    ),
+                    '\xA0',
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
+                        { to: '/category/add', className: 'btn btn-primary' },
+                        ' Add '
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { exact: true, path: '/category', component: __WEBPACK_IMPORTED_MODULE_3__Listing__["a" /* default */] }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { exact: true, path: '/category/add', component: __WEBPACK_IMPORTED_MODULE_2__Add__["a" /* default */] }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { exact: true, path: '/category/edit/:id', component: __WEBPACK_IMPORTED_MODULE_4__Edit__["a" /* default */] })
                 )
             );
         }
